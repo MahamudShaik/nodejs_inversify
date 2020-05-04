@@ -1,61 +1,47 @@
+import { Plan } from './../entities/Plan';
 import { injectable, inject } from "inversify";
-import { Plan } from "../interfaces/IPlan";
-import { MongoDBClient } from "../mongoDB/client";
 import { TYPES } from "../constants/types";
+import { Repository } from "typeorm";
 
 
 
 @injectable()
 export class PlanService {
 
-    private mongoClient: MongoDBClient;
+    public readonly _planRepository: Repository<Plan>;
 
-    constructor(
-        @inject(TYPES.MongoDBClient) mongoClient: MongoDBClient
-    ) {
-        this.mongoClient = mongoClient;
+    constructor(@inject(TYPES.UserRepository) planRepository: Repository<Plan>) {
+        this._planRepository = planRepository;
     }
 
 
     public getPlans(): Promise<Plan[]> {
 
-        return new Promise<Plan[]>((resolve, reject) => {
-            this.mongoClient.find('plan', {}, (error, data: Plan[]) => {
-                resolve(data);
-            });
-        });
-    }
+        return this._planRepository.find();
+    };
+
 
     public getPlan(id: string): Promise<Plan> {
-        var query = { name: id };
-        return new Promise<Plan>((resolve, reject) => {
-            this.mongoClient.find('plan', query, (error, data: Plan) => {
-                resolve(data);
-            });
-        });
+        return this._planRepository.findOne({ id })
     }
 
-    public newPlan(user: Plan): Promise<Plan> {
-        return new Promise<Plan>((resolve, reject) => {
-            this.mongoClient.insert('plan', user, (error, data: Plan) => {
-                resolve(data);
-            });
-        });
+    public async newPlan(plan: Plan): Promise<Plan> {
+        return this._planRepository.save(plan);
     }
 
-    public updatePlan(id: string, user: Plan): Promise<Plan> {
-        return new Promise<Plan>((resolve, reject) => {
-            this.mongoClient.update('plan', id, user, (error, data: Plan) => {
-                resolve(data);
-            });
-        });
-    }
+    // public updatePlan(id: string, user: Plan): void {
+    //     return new Promise<Plan>((resolve, reject) => {
+    //         this.mongoClient.update('plan', id, user, (error, data: Plan) => {
+    //             resolve(data);
+    //         });
+    //     });
+    // }
 
-    public deletePlan(id: string): Promise<any> {
-        return new Promise<any>((resolve, reject) => {
-            this.mongoClient.remove('plan', id, (error, data: any) => {
-                resolve(data);
-            });
-        });
-    }
+    // public deletePlan(id: string): void {
+    //     return new Promise<any>((resolve, reject) => {
+    //         this.mongoClient.remove('plan', id, (error, data: any) => {
+    //             resolve(data);
+    //         });
+    //     });
+    // }
 }

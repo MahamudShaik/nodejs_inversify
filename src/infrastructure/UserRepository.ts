@@ -1,5 +1,5 @@
 import { getConnection } from 'typeorm';
-import { User } from './User';
+import { User } from '../entities/User';
 
 export function getRepository() {
     const conn = getConnection();
