@@ -1,7 +1,10 @@
 import { Db, MongoClient } from 'mongodb';
+import { config } from '../../config';
 
-const connStr = 'mongodb+srv://mahamud:SM&mongo123@cluster0-8tc2w.mongodb.net/test?retryWrites=true&w=majority';
-const dbName = "NodejsPOC";
+const connStr = config.CONNECTION_STRING;
+const dbName = config.DATABASE;
+
+
 
 export class MongoDBConnection {
     private static isConnected: boolean = false;

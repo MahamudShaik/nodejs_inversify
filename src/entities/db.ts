@@ -1,5 +1,6 @@
 import { User } from './User';
 import { createConnection, Connection } from 'typeorm';
+import { config } from '../../config';
 
 
 export async function getDbConnection() {
@@ -7,16 +8,14 @@ export async function getDbConnection() {
     const entities = [
         User
     ]
-
     const connection: Connection = await createConnection({
         type: "mongodb",
-        url: "mongodb+srv://mahamud:SM&mongo123@cluster0-8tc2w.mongodb.net/test?retryWrites=true&w=majority",
+        url: config.CONNECTION_STRING,
         useNewUrlParser: true,
-        database: "NodejsPOC",
+        database: config.DATABASE,
         synchronize: true,
         logging: true,
         entities: entities
     });
-
     return connection;
 }

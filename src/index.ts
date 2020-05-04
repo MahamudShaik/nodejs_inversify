@@ -1,9 +1,7 @@
 import 'reflect-metadata';
-
 import { CustomAuthProvider } from './middleware/customAuthProvider';
 import { bindings } from './inversify.config';
-
-
+import { config } from '../config';
 import { MongoDBClient } from './mongoDB/client';
 import { PlanService } from './service/PlanService';
 import { IPlanService } from './interfaces/IPlanService';
@@ -36,8 +34,9 @@ import './controller/Auth';
     })
 
     let serverInstance = server.build();
-    serverInstance.listen(4000, () => {
-        console.log("server is started at 4000");
+
+    serverInstance.listen(config.PORT, () => {
+        console.log(`server is started at  ${config.PORT}`);
     });
 
 })();
