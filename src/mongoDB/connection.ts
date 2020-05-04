@@ -19,7 +19,6 @@ export class MongoDBConnection {
 
     private static connect(result: (error, db: Db) => void) {
         MongoClient.connect(connStr, { useNewUrlParser: true }, (err, client) => {
-            console.error('An error occurred connecting to MongoDB: ', err);
             this.db = client.db(dbName);
             this.isConnected = true;
             return result(err, this.db);

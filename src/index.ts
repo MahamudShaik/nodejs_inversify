@@ -37,7 +37,7 @@ import './controller/Auth';
 
     let serverInstance = server.build();
     serverInstance.listen(4000, () => {
-        console.log("server is started");
+        console.log("server is started at 4000");
     });
 
 })();
