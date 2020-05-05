@@ -1,9 +1,10 @@
-import { IPlanService } from './../interfaces/IPlanService';
-import { TYPES } from '../constants/types';
+import { IPlanService } from '../../application/useCase/IPlanUsecase';
+import { TYPES } from '../../constants/types';
 import { controller, httpGet, httpPost, response, requestParam, requestBody } from 'inversify-express-utils';
 import { inject } from 'inversify';
 import * as express from "express";
-import { Plan } from '../entities/Plan';
+import { Plan } from '../../domain/Plan';
+import IPlanDto from '../../application/useCase/IPlanDto';
 
 
 @controller('/plan')
@@ -33,9 +34,9 @@ export class PlanController {
     }
 
     @httpPost('/')
-    public newPlan(@response() res: express.Response, @requestBody() newPlan: Plan) {
+    public newPlan(@response() res: express.Response, @requestBody() newPlan: IPlanDto) {
         try {
-            this.IPlanService.newPlan(newPlan);
+            return this.IPlanService.newPlan(newPlan);
         }
         catch (ex) {
             res.status(500);

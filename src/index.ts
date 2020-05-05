@@ -1,16 +1,15 @@
 import 'reflect-metadata';
-import { CustomAuthProvider } from './middleware/customAuthProvider';
-import { bindings } from './inversify.config';
-import { config } from '../config';
-import { PlanService } from './service/PlanService';
-import { IPlanService } from './interfaces/IPlanService';
+import { CustomAuthProvider } from './entryPoint/middleware/customAuthProvider';
+import { bindings } from './configuration/useCase/inversify.config';
+import { config } from './configuration/useCase/config';
+import { PlanService } from './application/useCase/PlanUsecase';
+import { IPlanService } from './application/useCase/IPlanUsecase';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { Container } from 'inversify';
 import { TYPES } from './constants/types';
 import * as express from 'express';
-//import { makeLoggerMiddleware } from 'inversify-logger-middleware';
-import './controller/home';
-import './controller/Auth';
+import './entryPoint/controller/home';
+import './entryPoint/controller/Auth';
 
 (async () => {
     // load everything needed to the Container

@@ -9,8 +9,8 @@ import {
     requestBody
 } from "inversify-express-utils";
 import { Repository } from "typeorm";
-import { TYPES } from "../constants/types";
-import { User } from "../entities/User";
+import { TYPES } from "../../constants/types";
+import { User } from "../../domain/User";
 
 
 @controller('/user')

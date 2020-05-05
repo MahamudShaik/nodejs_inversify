@@ -1,6 +1,6 @@
-import { Plan } from './../entities/Plan';
+import { Plan } from '../../domain/Plan';
 import { injectable, inject } from "inversify";
-import { TYPES } from "../constants/types";
+import { TYPES } from "../../constants/types";
 import { Repository } from "typeorm";
 
 
@@ -10,7 +10,7 @@ export class PlanService {
 
     public readonly _planRepository: Repository<Plan>;
 
-    constructor(@inject(TYPES.UserRepository) planRepository: Repository<Plan>) {
+    constructor(@inject(TYPES.PlanRepository) planRepository: Repository<Plan>) {
         this._planRepository = planRepository;
     }
 

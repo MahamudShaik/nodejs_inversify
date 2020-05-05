@@ -1,12 +1,14 @@
-import { User } from './User';
+import { Plan } from '../domain/Plan';
+import { User } from '../domain/User';
 import { createConnection, Connection } from 'typeorm';
-import { config } from '../../config';
+import { config } from '../configuration/useCase/config';
 
 
 export async function getDbConnection() {
 
     const entities = [
-        User
+        User,
+        Plan
     ]
     const connection: Connection = await createConnection({
         type: "mongodb",

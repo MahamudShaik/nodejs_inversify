@@ -25,10 +25,8 @@ export class Principal implements interfaces.Principal {
 
     constructor(details: any) {
         this.details = details;
-        console.log(this.details);
     }
     isAuthenticated(): Promise<boolean> {
-        console.log("is" + (this.details.role === "admin"));
         return Promise.resolve(this.details.role === "admin")
     }
     isResourceOwner(resourceId: any): Promise<boolean> {

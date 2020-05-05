@@ -1,7 +1,7 @@
 import { getConnection } from 'typeorm';
-import { Plan } from '../entities/Plan';
+import { Plan } from '../domain/Plan';
 
-export function planRepository() {
+export function getPlanRepository() {
     const conn = getConnection();
     const userRepository = conn.getMongoRepository(Plan);
     return userRepository;
