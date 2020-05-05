@@ -1,10 +1,10 @@
 import { Plan } from "../../domain/Plan";
 import IPlanDto from "./IPlanDto";
 
-export interface IPlanService {
+export interface IPlanUsecase {
     getPlans(): Promise<Plan[]>;
-    getPlan(id: string): Promise<Plan>;
+    getPlan(name: string): Promise<Plan>;
     newPlan(user: IPlanDto): Promise<Plan>;
-    // updatePlan(id: string, user: Plan): void;
-    // deletePlan(id: string): void;
+    updatePlan(name: string, user: IPlanDto): Promise<any>;
+    deletePlan(name: string): Promise<any>;
 }

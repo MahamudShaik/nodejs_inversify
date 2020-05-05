@@ -2,8 +2,8 @@ import 'reflect-metadata';
 import { CustomAuthProvider } from './entryPoint/middleware/customAuthProvider';
 import { bindings } from './configuration/useCase/inversify.config';
 import { config } from './configuration/useCase/config';
-import { PlanService } from './application/useCase/PlanUsecase';
-import { IPlanService } from './application/useCase/IPlanUsecase';
+import { PlanUsecase } from './application/useCase/PlanUsecase';
+import { IPlanUsecase } from './application/useCase/IPlanUsecase';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { Container } from 'inversify';
 import { TYPES } from './constants/types';
@@ -16,7 +16,7 @@ import './entryPoint/controller/Auth';
     let container = new Container();
     await container.loadAsync(bindings);
     // container.bind<MongoDBClient>(TYPES.MongoDBClient).to(MongoDBClient);
-    container.bind<IPlanService>(TYPES.IPlanService).to(PlanService);
+    container.bind<IPlanUsecase>(TYPES.IPlanUsecase).to(PlanUsecase);
     //let start the server
     let server = new InversifyExpressServer(container, null, null, null, CustomAuthProvider);
 

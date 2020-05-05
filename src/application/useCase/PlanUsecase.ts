@@ -1,16 +1,18 @@
+import { IPlanUsecase } from './IPlanUsecase';
 import { Plan } from '../../domain/Plan';
 import { injectable, inject } from "inversify";
 import { TYPES } from "../../constants/types";
-import { Repository } from "typeorm";
+import { MongoRepository } from "typeorm";
+import IPlanDto from './IPlanDto';
 
 
 
 @injectable()
-export class PlanService {
+export class PlanUsecase implements IPlanUsecase {
 
-    public readonly _planRepository: Repository<Plan>;
+    public readonly _planRepository: MongoRepository<Plan>;
 
-    constructor(@inject(TYPES.PlanRepository) planRepository: Repository<Plan>) {
+    constructor(@inject(TYPES.PlanRepository) planRepository: MongoRepository<Plan>) {
         this._planRepository = planRepository;
     }
 
@@ -21,27 +23,19 @@ export class PlanService {
     };
 
 
-    public getPlan(id: string): Promise<Plan> {
-        return this._planRepository.findOne({ id })
+    public getPlan(name: string): Promise<Plan> {
+        return this._planRepository.findOne({ name: name });
     }
 
-    public async newPlan(plan: Plan): Promise<Plan> {
+    public async newPlan(plan: IPlanDto): Promise<Plan> {
         return this._planRepository.save(plan);
     }
 
-    // public updatePlan(id: string, user: Plan): void {
-    //     return new Promise<Plan>((resolve, reject) => {
-    //         this.mongoClient.update('plan', id, user, (error, data: Plan) => {
-    //             resolve(data);
-    //         });
-    //     });
-    // }
+    public updatePlan(name: string, plan: IPlanDto): Promise<any> {
+        return this._planRepository.update({ name: name }, plan);
+    }
 
-    // public deletePlan(id: string): void {
-    //     return new Promise<any>((resolve, reject) => {
-    //         this.mongoClient.remove('plan', id, (error, data: any) => {
-    //             resolve(data);
-    //         });
-    //     });
-    // }
+    public deletePlan(name: string): Promise<any> {
+        return this._planRepository.deleteOne({ name: name });
+    }
 }

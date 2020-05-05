@@ -1,6 +1,5 @@
 export const TYPES = {
-    IPlanService: Symbol.for('IPlanService'),
-    MongoDBClient: Symbol.for('MongoDBClient'),
+    IPlanUsecase: Symbol.for('IPlanUsecase'),
     UserRepository: Symbol.for('UserRepository'),
     AuthMiddleware: Symbol.for('AuthMiddleware'),
     PlanRepository: Symbol.for('PlanRepository')
