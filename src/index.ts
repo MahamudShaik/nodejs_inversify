@@ -8,6 +8,8 @@ import { InversifyExpressServer } from 'inversify-express-utils';
 import { Container } from 'inversify';
 import { TYPES } from './constants/types';
 import * as express from 'express';
+import swaggerUi from 'swagger-ui-express';
+import * as swaggerDocument from './swagger.json';
 import './entryPoint/controller/home';
 import './entryPoint/controller/Auth';
 
@@ -21,7 +23,7 @@ import './entryPoint/controller/Auth';
     let server = new InversifyExpressServer(container, null, null, null, CustomAuthProvider);
 
     server.setConfig((app) => {
-
+        app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
         app.use(express.urlencoded({ extended: false }));
         app.use(express.json());
     });

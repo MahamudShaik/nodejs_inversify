@@ -31,8 +31,9 @@ export class PlanUsecase implements IPlanUsecase {
         return this._planRepository.save(plan);
     }
 
-    public updatePlan(name: string, plan: IPlanDto): Promise<any> {
-        return this._planRepository.update({ name: name }, plan);
+    public async updatePlan(name: string, plan: IPlanDto): Promise<any> {
+        await this._planRepository.update({ name: name }, plan);
+        return this._planRepository.findOne({ name: name });
     }
 
     public deletePlan(name: string): Promise<any> {

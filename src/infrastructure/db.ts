@@ -17,7 +17,8 @@ export async function getDbConnection() {
         database: config.DATABASE,
         synchronize: true,
         logging: true,
-        entities: entities
+        entities: entities,
+        useUnifiedTopology: true
     });
     return connection;
 }

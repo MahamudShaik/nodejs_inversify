@@ -10,6 +10,8 @@
         "sourceMap": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
         "moduleResolution": "node",
         "noUnusedLocals": true
     },
