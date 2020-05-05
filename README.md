@@ -3,6 +3,11 @@ where u can run that by using the below command
 
 ts-node inversifyPOC/index 
 
+
+
+
+Node JS  Web Application 
+
 => the src folder contains the web api development using inversify-express-utils
 
 it runs on localhost 4000
@@ -18,3 +23,7 @@ controllers
  3. Plan Controller => its a custom controller . CRUD operations on mongoDB. mongoDB implementation in mongoDB folder.
  4. user Controller => uses TYPEORM. u can see TYPEORM implementation in entities foilder.
 
+
+=>  Added Swagger UI 
+
+http://localhost:3000/swagger/
