@@ -12,6 +12,7 @@ import swaggerUi from 'swagger-ui-express';
 import * as swaggerDocument from './swagger.json';
 import './entryPoint/controller/home';
 import './entryPoint/controller/Auth';
+import { logger } from './configuration/useCase/logger';
 
 (async () => {
     // load everything needed to the Container
@@ -37,7 +38,7 @@ import './entryPoint/controller/Auth';
 
     let serverInstance = server.build();
     serverInstance.listen(config.PORT, () => {
-        console.log(`server is started at  ${config.PORT}`);
+        logger.info(`server is started at  ${config.PORT}`);
     });
 
 })();

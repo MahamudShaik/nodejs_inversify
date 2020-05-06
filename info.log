@@ -1,0 +1,19 @@
+info: server is started at  3000 {"timestamp":"2020-05-05T12:38:36.354Z"}
+info: server is started at  3000 {"timestamp":"2020-05-05T12:46:16.453Z"}
+info: Plan/plans Incoming  get all Request {"timestamp":"2020-05-05T12:46:31.515Z"}
+info: Plan/plans Incoming  get all Request {"timestamp":"2020-05-05T12:46:32.846Z"}
+info: Plan/plan Incoming   get Request name is wedfdsf {"timestamp":"2020-05-05T12:46:56.784Z"}
+error: Plan/plan Incoming   get Request failed , given name is invalid  {"timestamp":"2020-05-05T12:46:56.805Z"}
+info: trying to connect Plan Repository {"timestamp":"2020-05-05T12:51:51.678Z"}
+info: Connected to Plan Repository {"timestamp":"2020-05-05T12:51:51.679Z"}
+info: server is started at  3000 {"timestamp":"2020-05-05T12:51:51.685Z"}
+info: trying to connect Plan Repository {"timestamp":"2020-05-05T12:52:44.941Z"}
+info: Connected to Plan Repository {"timestamp":"2020-05-05T12:52:44.941Z"}
+info: Plan/plan Incoming   get Request name is Lorem {"timestamp":"2020-05-05T12:52:44.942Z"}
+info: PlanUsecase/getplan started for name Lorem {"timestamp":"2020-05-05T12:52:44.942Z"}
+error: Plan/plan Incoming   get Request failed , given name is invalid  {"timestamp":"2020-05-05T12:52:44.987Z"}
+info: trying to connect Plan Repository {"timestamp":"2020-05-05T12:52:52.531Z"}
+info: Connected to Plan Repository {"timestamp":"2020-05-05T12:52:52.532Z"}
+info: Plan/plan Incoming   get Request name is Activa {"timestamp":"2020-05-05T12:52:52.532Z"}
+info: PlanUsecase/getplan started for name Activa {"timestamp":"2020-05-05T12:52:52.532Z"}
+info: Plan/plan Incoming   get Request name is completed , plan is retrived  {"timestamp":"2020-05-05T12:52:52.567Z"}
